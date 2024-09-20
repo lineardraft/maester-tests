@@ -1,0 +1,30 @@
+name: Maester Daily Tests
+
+on:
+  push:
+    branches: ["main"]
+  # Run once a day at midnight
+  schedule:
+    - cron: "0 0 * * *"
+  # Allows to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+      id-token: write
+      contents: read
+      checks: write
+
+jobs:
+  run-maester-tests:
+    name: Run Maester Tests
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run Maester action
+      uses: maester365/maester@main
+      with:
+        client_id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant_id: ${{ secrets.AZURE_TENANT_ID }}
+        include_public_tests: true # Optional: Set to false if you are keeping to a certain version of tests or have your own tests
+        step_summary: true         # Optional: Set to false if you don't want a summary added to your GitHub Action run
+        artifact_upload: true      # Optional: Set to false if you don't want summaries uploaded to GitHub Artifacts
+        # Other inputs are available and can be reviewed in the action.yml in the Maester repository
