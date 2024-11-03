@@ -1,11 +1,11 @@
 name: Maester Daily Tests
 
 on:
-  push:
-    branches: ["main"]
+  # push:
+  #   branches: ["main"]
   # Run once a day at midnight
-  schedule:
-    - cron: "0 0 * * *"
+  # schedule:
+  #   - cron: "0 0 * * *"
   # Allows to run this workflow manually from the Actions tab
   workflow_dispatch:
 
