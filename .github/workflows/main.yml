@@ -19,8 +19,10 @@ jobs:
     name: Run Maester Tests
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
     - name: Run Maester action
-      uses: ./action.yml
+      uses: ./.github/workflows/action.yml
       with:
         client_id: ${{ secrets.AZURE_CLIENT_ID }}
         tenant_id: ${{ secrets.AZURE_TENANT_ID }}
