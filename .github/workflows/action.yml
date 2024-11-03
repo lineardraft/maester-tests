@@ -91,7 +91,7 @@ runs:
           Connect-MgGraph -AccessToken $accessToken -NoWelcome
 
           # Install Maester
-          Install-Module Maester -Force -AllowPrerelease -RequiredVersion '{{ inputs.master_module_version }}'
+          Install-Module Maester -Force -AllowPrerelease -RequiredVersion '${{ inputs.master_module_version }}'
 
           # Configure test results
           $PesterConfiguration = New-PesterConfiguration
